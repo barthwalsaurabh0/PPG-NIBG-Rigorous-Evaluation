@@ -48,8 +48,9 @@ python models.py
 ## Data
 
 Download PhysioCGM from https://doi.org/10.6084/m9.figshare.28136294 and
-unzip each `<subject>_raw.zip` into its own `<subject>_raw` folder
-(e.g. `unzip c1s01_raw.zip -d RAW_DIR/c1s01_raw`):
+extract each `<subject>_raw.zip` into its own `<subject>_raw` folder.
+The zips use LZMA compression, so use 7-Zip (plain `unzip` may fail):
+`7z x c1s01_raw.zip -oRAW_DIR/c1s01_raw`
 
 ```
 RAW_DIR/
@@ -115,8 +116,7 @@ baseline that always predicts the training-set mean (`mean_*` columns).
 ### Notes
 
 - Seeds are fixed per participant. Mamba's GPU kernels are not fully
-  deterministic, so its numbers can differ slightly between runs (about
-  0.2 mg/dL MAE in our runs).
+  deterministic, so its numbers can differ slightly between runs.
 - The random split is a deliberate leakage example, not a valid protocol.
 
 ## Citation
